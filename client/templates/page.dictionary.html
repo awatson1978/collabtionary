@@ -1,0 +1,157 @@
+<template name="test">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+        Test!
+        </div>
+    </div>
+</template>
+
+
+<template name="dictionaryDatasetTemplate">
+    <div id="dictionaryDatasetPage" class="page">
+        <div class="container doesnt-overlap-header">
+            {{> dictionaryIndexTemplate }}
+
+            <!--<div class="about-panel panel panel-success">-->
+                <!--<div class="panel-heading">-->
+                    <!--About-->
+                <!--</div>-->
+                <!--<div class="col col-lg-2 with-btn-spacer">-->
+                    <!--<div class="get-the-code-button fullwidth btn btn-success">Get the Code</div>-->
+                <!--</div>-->
+                <!--<div class="col col-lg-2 with-btn-spacer">-->
+                    <!--<div class="about-the-author-button fullwidth btn btn-default">About the Author</div>-->
+                <!--</div>-->
+                <!--<div class="col col-lg-8">-->
+                    <!--<p>This dictionary is based on a copy of the Websters Unabridged English Dictionary, circa 1920.  Feel free to add or edit entries.  As about open a dictionary as you can get.  :)  </p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            {{#if notEditingWord }}
+            <div class="padded panel control-buttons">
+                <div class="col col-lg-3 with-btn-spacer">
+                    <div class="dictionary-btn fullwidth btn btn-info">Main Dictionary</div>
+                </div>
+                <div class="col col-lg-3 with-btn-spacer">
+                    <div class="editing-queue-button fullwidth btn btn-default">Editing Queue</div>
+                </div>
+                <div class="col col-lg-3 with-btn-spacer">
+                    <div class="approval-queue-button fullwidth btn btn-default">Approval Queue</div>
+                </div>
+                <div class="col col-lg-3 with-btn-spacer">
+                    <div class="deleting-queue-button fullwidth btn btn-default">Deletion Queue</div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="dictionaryIndexTemplate">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <input id="dictionarySearchInput" type="text" placeholder="Filter..." value="life"></input>
+        </div>
+
+        {{#if editingWord }}
+        {{> dictionaryFormTemplate }}
+        {{else}}
+        <ul class="list-group">
+            {{#each dictionaryList}}
+            {{> dictionaryItemTemplate }}
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+
+    {{#if editingWord }}
+    <div class="padded panel control-buttons">
+        <div class="col col-lg-4 with-btn-spacer">
+            <div class="cancel-btn fullwidth btn btn-info">Back to Dictionary</div>
+        </div>
+        <div class="col col-lg-2 with-btn-spacer">
+            <div class="flag-btn fullwidth btn btn-default">Flag</div>
+        </div>
+        <div class="col col-lg-2 with-btn-spacer">
+            <div class="approve-btn fullwidth btn btn-default">Approve</div>
+        </div>
+        <div class="col col-lg-2 with-btn-spacer">
+            <div class="new-button fullwidth btn btn-default">New Entry</div>
+        </div>
+        <div class="col col-lg-2 with-btn-spacer">
+            <div class="delete-button fullwidth btn btn-default">Delete</div>
+        </div>
+    </div>
+    {{/if}}
+</template>
+<template name="dictionaryItemTemplate">
+    <li class="list-group-item">
+        <ul class="horizontal">
+            <li class="pictograph status"><div class="status-icon">{{ getStatus }}</div></li>
+            <li class="bold word"><div class="word-text">{{ Word }}</div></li>
+            <li class="definition">{{ Definition }}</li>
+        </ul>
+    </li>
+</template>
+
+
+
+
+<template name="dictionaryFormTemplate">
+    {{#if word}}
+    {{#with word}}
+    <div class="whitepaper dictionary-form">
+        <div class="col col-lg-3">
+            <input id="dictionaryWordInput" type="text" placeholder="spelling..." value="{{Word}}" {{word_enabled}}></input>
+            <label class="smallgray" for="dictionaryWordInput">Word</label>
+            <br>
+            <div class="entry-status">
+                <span class="huge pictograph">{{getStatus}}</span><span class="status-text">  {{ Status }}</span>
+            </div>
+        </div>
+        <div class="col col-lg-9">
+
+            <label class="textarea" for="dictionaryDefinitionInput">Definition</label>
+            <textarea id="dictionaryDefinitionInput" placeholder="spelling..." rows="3" {{definition_enabled}}> {{ Definition }} </textarea>
+
+        </div>
+    </div>
+
+    {{#if isNewWord}}
+    <div class="spacer row"></div>
+    <div class="container">
+        <div class="col col-lg-12">
+            <button id="newDictionaryWordButton" type="button" class="fullwidth btn btn-info" width="100%">Create New Word!</button>
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if isDeletingWord}}
+    <div class="padded container">
+        <div class="alert alert-danger">
+            <h4 class="centered">Are you sure you want to delete this record?</h4>
+            <div class="container">
+                <div class="col col-lg-6">
+                    <button id="deleteDictionaryWordButton" type="button" class="fullwidth btn btn-danger">Delete</button>
+                </div>
+                <div class="col col-lg-6">
+                    <button id="cancelDeleteDictionaryWordButton" type="button" class="fullwidth btn btn-danger">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/with}}
+    {{else}}
+    <div class="panel panel-info">
+        <div class="panel-heading padded">
+            <bold>Dictionary Entry ID:</bold> ...
+        </div>
+        <div class="centered dictionary-form">
+            <h4>Select a dictionary entry to edit.</h4>
+        </div>
+    </div>
+    {{/if}}
+</template>
+

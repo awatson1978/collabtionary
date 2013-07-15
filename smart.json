@@ -1,0 +1,12 @@
+{
+  "packages": {
+    "router": {},
+    "fonts-pictographs": {},
+    "roles": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "moment": {},
+    "accounts-famous-dead-people": {
+        "git": "https://github.com/awatson1978/accounts-famous-dead-people"
+    }
+  }
+}

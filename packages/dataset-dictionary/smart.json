@@ -1,0 +1,8 @@
+{
+    "name": "dataset-dictionary",
+    "description": "Meteorite package that provides a the Webster Unabridged English Dictionary.",
+    "homepage": "https://github.com/awatson1978/dataset-dictionary",
+    "author": "Abigail Watson  (http://www.pentasyllabic.com)",
+    "version": "0.1.4",
+    "git": "https://github.com/awatson1978/dataset-dictionary.git"
+}
