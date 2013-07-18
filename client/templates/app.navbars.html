@@ -1,0 +1,58 @@
+<template name="navbarHeaderTemplate">
+    <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
+        <div class="container">
+            <a class="navbar-brand" href="/">Collabtionary</a>
+
+            <ul class="horizontal inline pull-right">
+                <li class="clickable unselectable profile-icon"><span class="largish lightgray pictograph">k  </span></li>
+                <li>{{loginButtons}}</li>
+            </ul>
+        </div>
+    </div>
+
+</template>
+
+
+<template name="navbarFooterTemplate">
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="centered container">
+            {{> queuesList }}
+        </div>
+    </div>
+</template>
+
+
+
+<template name="queuesList">
+    <div class="container">
+        {{#if queuesAreVisible }}
+        <!--<div class="padded panel control-buttons">-->
+        <div class="col col-lg-3 with-btn-spacer">
+            <div class="dictionary-btn fullwidth footer-text">All Items</div>
+            <!--<div class="dictionary-btn fullwidth btn btn-info">All Items</div>-->
+        </div>
+            {{#if isEditor }}
+            <div class="col col-lg-3 with-btn-spacer">
+                <div class="flagged-queue-button fullwidth footer-text">Flagged Queue</div>
+                <!--<div class="editing-queue-button fullwidth btn btn-default">Flagged Queue</div>-->
+            </div>
+            <div class="col col-lg-3 with-btn-spacer">
+                <div class="edited-queue-button fullwidth footer-text">Edited Queue</div>
+                <!--<div class="edited-queue-button fullwidth btn btn-default">Edited Queue</div>-->
+            </div>
+            <div class="col col-lg-3 with-btn-spacer">
+                <div class="approved-queue-button fullwidth footer-text">Approved Queue</div>
+                <!--<div class="deleting-queue-button fullwidth btn btn-default">Approved Queue</div>-->
+            </div>
+                {{#if isAdmin }}
+                <div class="col col-lg-2 with-btn-spacer">
+                    <div class="deleting-queue-button fullwidth footer-text">Deleted Queue</div>
+                    <!--<div class="deleting-queue-button fullwidth btn btn-default">Deleted Queue</div>-->
+                </div>
+                {{/if}}
+            {{/if}}
+        <!--</div>-->
+        {{/if}}
+    </div>
+</template>
+

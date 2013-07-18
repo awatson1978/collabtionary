@@ -1,28 +1,27 @@
 Session.setDefault('selected_word', 'life');
 Session.setDefault('active_queue', '');
+Session.setDefault('queues_are_visible', false);
 
 
 
-Template.dictionaryDatasetTemplate.events({
-    'click .dictionary-btn':function(){
-        Session.set('show_login_menu', false);
-        Session.set('active_queue', "");
-    },
-    'click .editing-queue-button':function(){
-        Session.set('show_login_menu', false);
-        Session.set('active_queue', "Flagged");
-    },
-    'click .approval-queue-button':function(){
-        Session.set('show_login_menu', false);
-        Session.set('active_queue', "Approved");
-    },
-    'click .deleting-queue-button':function(){
-        Session.set('show_login_menu', false);
-        Session.set('active_queue', "Deleting");
+Template.queuesList.isCollaborator = function(){
+    if(Meteor.userId()){
+        return isCollaborator(Meteor.userId()) || isEditor(Meteor.userId()) || isAdmin(Meteor.userId());
+    }else{
+        return false;
     }
-});
+};
+Template.queuesList.isEditor = function(){
+    return isEditor(Meteor.userId()) || isAdmin(Meteor.userId());
+};
+Template.queuesList.isAdmin = function(){
+    return isAdmin(Meteor.userId());
+};
 
 
+
+//-------------------------------------------------------------
+// dictionaryDatasetTemplate
 
 Template.dictionaryDatasetTemplate.notEditingWord = function(){
     if(Session.get('selected_word')){
@@ -34,10 +33,25 @@ Template.dictionaryDatasetTemplate.notEditingWord = function(){
 
 
 
-
-
 //-------------------------------------------------------------
 // dictionaryIndexTemplate
+
+Template.dictionaryIndexTemplate.isCollaborator = function(){
+
+    if(Meteor.userId()){
+        return isCollaborator(Meteor.userId()) || isEditor(Meteor.userId()) || isAdmin(Meteor.userId());
+    }else{
+        return false;
+    }
+};
+Template.dictionaryIndexTemplate.isEditor = function(){
+    return isEditor(Meteor.userId()) || isAdmin(Meteor.userId());
+};
+Template.dictionaryIndexTemplate.isAdmin = function(){
+    return isAdmin(Meteor.userId());
+};
+
+
 
 Template.dictionaryIndexTemplate.editingWord = function(){
     if(Session.get('selected_word')){
@@ -163,6 +177,18 @@ Template.dictionaryFormTemplate.events({
         Meteor.flush();
     },
 
+    'click #pronunciationInput':function(){
+        Session.set('editing_pronunciation', true);
+        Meteor.flush();
+    },
+    'click #grammarInput':function(){
+        Session.set('editing_grammar', true);
+        Meteor.flush();
+    },
+    'click #imageUrlInput':function(){
+        Session.set('editing_image', true);
+        Meteor.flush();
+    },
     //-------------------------------------------------------------
     // 2. Mobile Tabs - Editing
 
@@ -172,6 +198,19 @@ Template.dictionaryFormTemplate.events({
     },
     'mouseout #dictionaryDefinitionInput':function(){
         Session.set('editing_definition', true);
+        Meteor.flush();
+    },
+
+    'mouseout #pronunciationInput':function(){
+        Session.set('editing_pronunciation', false);
+        Meteor.flush();
+    },
+    'mouseout #grammarInput':function(){
+        Session.set('editing_grammar', false);
+        Meteor.flush();
+    },
+    'mouseout #imageUrlInput':function(){
+        Session.set('editing_image', false);
         Meteor.flush();
     }
 })
@@ -209,6 +248,45 @@ Template.dictionaryFormTemplate.events(
         })
 );
 
+Template.dictionaryFormTemplate.events(
+    okCancelEvents('#pronunciationInput',
+        {
+            ok: function (value) {
+                Dictionary.update(Session.get('selected_word'), {$set: { 'Pronunciation': value }});
+                Session.set('editing_pronunciation', false);
+                Meteor.flush();
+            },
+            cancel: function () {
+                Session.set('editing_pronunciation', false);
+            }
+        })
+);
+Template.dictionaryFormTemplate.events(
+    okCancelEvents('#grammarInput',
+        {
+            ok: function (value) {
+                Dictionary.update(Session.get('selected_word'), {$set: { 'Grammar': value }});
+                Session.set('editing_grammar', false);
+                Meteor.flush();
+            },
+            cancel: function () {
+                Session.set('editing_grammar', false);
+            }
+        })
+);
+Template.dictionaryFormTemplate.events(
+    okCancelEvents('#imageUrlInput',
+        {
+            ok: function (value) {
+                Dictionary.update(Session.get('selected_word'), {$set: { 'Image': value }});
+                Session.set('editing_image', false);
+                Meteor.flush();
+            },
+            cancel: function () {
+                Session.set('editing_image', false);
+            }
+        })
+);
 //-------------------------------------------------------------
 // D. Display Readonly Value
 
@@ -231,6 +309,33 @@ Template.dictionaryFormTemplate.definition_enabled = function(){
     }
 };
 
+Template.dictionaryFormTemplate.pronunciation_enabled = function(){
+    if(Session.get('global_edit')){
+        return "enabled";
+    }else if(Session.get('editing_pronunciation')){
+        return "enabled";
+    }else{
+        return "readonly";
+    }
+};
+Template.dictionaryFormTemplate.grammar_enabled = function(){
+    if(Session.get('global_edit')){
+        return "enabled";
+    }else if(Session.get('editing_grammar')){
+        return "enabled";
+    }else{
+        return "readonly";
+    }
+};
+Template.dictionaryFormTemplate.image_enabled = function(){
+    if(Session.get('global_edit')){
+        return "enabled";
+    }else if(Session.get('editing_image')){
+        return "enabled";
+    }else{
+        return "readonly";
+    }
+};
 
 //-------------------------------------------------------------
 // E. Buttons

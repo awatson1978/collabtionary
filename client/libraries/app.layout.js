@@ -35,28 +35,8 @@ Template.appContainerTemplate.events({
 
 Template.appContainerTemplate.title = function(){
     return Session.get('account_search_term');
-}
-
-
-
-//-----------------------------------------------------
-// NAVBARS
-
-Template.navbarFooterTemplate.isVisible = function(){
-    if(Session.get('currentDataset')){
-        return true;
-    }else{
-        return false;
-    }
 };
 
 
-Template.navbarFooterTemplate.isVisible = function(){
-    if(Session.get('currentDataset')){
-        return true;
-    }else{
-        return false;
-    }
-};
 
 

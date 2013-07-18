@@ -16,14 +16,12 @@ Template.userProfileTemplate.helpers({
 
 Template.userAccountsListTemplate.userAccountsList = function(){
     try{
+        console.log('userRoleSearch: ' + Session.get('userRoleSearch'));
         return Meteor.users.find({
-            'profile.applicantType': Session.get('applicantType'),
             'username': { $regex: Session.get('profile_username_search'), $options: 'i' },
-            'profile.name': { $regex: Session.get('profile_name_search'), $options: 'i' },
-            'profile.visibility': { $regex: Session.get('profile_visibility_search'), $options: 'i' },
-
-            'profile.employment': { $regex: Session.get('profile_employment_search'), $options: 'i' },
-            'profile.interests': { $regex: Session.get('profile_interests_search'), $options: 'i' }
+            'profile.role': Session.get('userRoleSearch')
+//            'profile.name': { $regex: Session.get('profile_name_search'), $options: 'i' },
+//            'profile.visibility': { $regex: Session.get('profile_visibility_search'), $options: 'i' }
 
         });
     }catch(error){
@@ -74,50 +72,16 @@ Template.userProfileFormTemplate.helpers({
                     "emails[0].address":"",
 
                     "profile.name":"",
-                    "profile.socialsecurity":"",
-
-                    "profile.age":"",
-                    "profile.dateofbirth":"",
 
                     "profile.address":"",
                     "profile.city":"",
                     "profile.county":"",
                     "profile.state":"",
                     "profile.zip":"",
+                    "profile.phone":"",
 
-                    "profile.workphone":"",
-                    "profile.homephone":"",
-                    "profile.mobilephone":"",
+                    "profile.applicantType":""
 
-
-                    "profile.applicantType":"",
-                    "profile.applicantionStatus":"",
-
-                    "profile.education":"",
-                    "profile.employment":"",
-                    "profile.interests":"",
-
-                    "profile.sexhistory.injections":"",
-                    "profile.sexhistory.hemophilia":"",
-                    "profile.sexhistory.prostitution":"",
-                    "profile.sexhistory.client":"",
-                    "profile.sexhistory.std":"",
-                    "profile.sexhistory.bicurious":"",
-                    "profile.sexhistory.africa":""
-
-
-//                    "profile.education.highschool":"",
-//                    "profile.education.college":"",
-//                    "profile.education.collegeDegree":"",
-//                    "profile.education.graduate":"",
-//                    "profile.education.graduateDegree":"",
-//                    "profile.education.other":"",
-
-//                    "profile.employment.currentlyEmployed":"",
-//                    "profile.employment.occupation":"",
-//                    "profile.employment.employmentStatus":"",
-
-//                    "profile.maritalStatus":"",
                 };
             }else{
                 Session.set('selected_user_object', Meteor.users.findOne(Session.get('selected_user')));
@@ -161,14 +125,77 @@ Template.userProfileFormTemplate.events({
     'click #homePhoneInput': setSessionTrue('editing_homephone', this._id),
     'click #mobilePhoneInput': setSessionTrue('editing_mobilephone', this._id),
     'click #applicantTypeInput': setSessionTrue('editing_applicant_type', this._id),
-    'click #applicantStatusInput': setSessionTrue('editing_applicant_status', this._id),
 
-    'click #educationInput': setSessionTrue('editing_education', this._id),
-    'click #employmentInput': setSessionTrue('editing_employment', this._id),
-    'click #interestsInput': setSessionTrue('editing_interests', this._id)
+    'click #notesInput': setSessionTrue('notes_education', this._id),
+
+    'click .search-btn':function(){
+        Meteor.Router.to('/search/');
+    },
+    'click .manage-btn':function(){
+        Meteor.Router.to('/manage/');
+    },
+
+    'click .dictionary-btn':function(){
+        Meteor.Router.to('/');
+        Session.set('selected_word', "")
+        Session.set('active_queue', "");
+    },
+    'click .flagged-btn':function(){
+        Meteor.Router.to('/');
+        Session.set('selected_word', "")
+        Session.set('active_queue', "Flagged");
+    },
+    'click .approved-btn':function(){
+        Meteor.Router.to('/');
+        Session.set('selected_word', "")
+        Session.set('active_queue', "Approved");
+    },
+
+    'click .set-admin-btn':function(){
+        Meteor.users.update(Session.get('selected_user'), {$set: { 'profile.role': 'Admin' }});
+        //Roles.addUsersToRoles(userId, 'Collaborator');
+        setRole(this._id, 'Admin');
+        Meteor.flush();
+    },
+    'click .set-editor-btn':function(){
+        Meteor.users.update(Session.get('selected_user'), {$set: { 'profile.role': 'Editor' }});
+        setRole(this._id, 'Editor');
+        Meteor.flush();
+    },
+    'click .set-collaborator-btn':function(){
+        Meteor.users.update(Session.get('selected_user'), {$set: { 'profile.role': 'Collaborator' }});
+        setRole(this._id, 'Collaborator');
+        Meteor.flush();
+    }
 });
 
 
+//Session.setDefault('userRole', 'Collaborator');
+Session.get('userRole');
+Template.userProfileFormTemplate.adminCardButtonActive = function(){
+    var user = Meteor.users.findOne(Session.get('selected_user'));
+    if(user.profile.role == "Admin"){
+        return "btn-info";
+    }else{
+        return "btn-default"
+    }
+};
+Template.userProfileFormTemplate.editorCardButtonActive = function(){
+    var user = Meteor.users.findOne(Session.get('selected_user'));
+    if(user.profile.role == "Editor"){
+        return "btn-info";
+    }else{
+        return "btn-default"
+    }
+};
+Template.userProfileFormTemplate.collaboratorCardButtonActive = function(){
+    var user = Meteor.users.findOne(Session.get('selected_user'));
+    if(user.profile.role == "Collaborator"){
+        return "btn-info";
+    }else{
+        return "btn-default"
+    }
+};
 
 //-------------------------------------------------------------
 // F. Submit Input to Mongo (Update)
@@ -517,46 +544,46 @@ Template.userProfileFormTemplate.isSelectingProfileType = function(){
     return Session.get('is_selecting_profile_type');
 };
 
-Template.userProfileFormTemplate.events({
-    'click .profile-image': function(){
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .sperm-icon-btn': function(){
-        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Sperm Donor'}});
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .zygote-icon-btn': function(){
-        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Egg Donor'}});
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .pregnant-icon-btn': function(){
-        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Surrogate'}});
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .female-icon-btn': function(){
-        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Egg Donor'}});
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .male-icon-btn': function(){
-        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Sperm Donor'}});
-        toggleSession('is_selecting_profile_type', true);
-    },
-    'click .conception-icon-btn': function(){
-        toggleSession('is_selecting_profile_type', true);
-    }
-});
+//Template.userProfileFormTemplate.events({
+//    'click .profile-image': function(){
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .sperm-icon-btn': function(){
+//        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Sperm Donor'}});
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .zygote-icon-btn': function(){
+//        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Egg Donor'}});
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .pregnant-icon-btn': function(){
+//        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Surrogate'}});
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .female-icon-btn': function(){
+//        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Egg Donor'}});
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .male-icon-btn': function(){
+//        Meteor.users.update(Session.get('selected_user'),{ $set: { 'profile.applicantType': 'Sperm Donor'}});
+//        toggleSession('is_selecting_profile_type', true);
+//    },
+//    'click .conception-icon-btn': function(){
+//        toggleSession('is_selecting_profile_type', true);
+//    }
+//});
 
 Template.userProfileFormTemplate.avatar_for_account_type = function(){
     try{
         if(this.profile){
-            if(this.profile.applicantType == "Egg Donor"){
-                return "/images/icons/Zygote.png";
-            }else if (this.profile.applicantType == "Sperm Donor"){
-                return "/images/icons/Sperm.png";
-            }else if(this.profile.applicantType == "Surrogate"){
-                return "/images/icons/Pregnant.png";
+            if(this.profile.role == "Administrator"){
+                return "/images/icons/Default_User.jpg";
+            }else if (this.profile.role == "Editor"){
+                return "/images/icons/Default_User.jpg";
+            }else if(this.profile.role == "Collaborator"){
+                return "/images/icons/Default_User.jpg";
             }else{
-                return "/images/icons/Conception.png";
+                return "/images/icons/Default_User.jpg";
             }
         }else{
             return "/images/icons/Default_User.jpg";
@@ -580,14 +607,14 @@ Template.userAccountCardTemplate.isPublic = function(){
 };
 Template.userAccountCardTemplate.userlist_avatar_for_account_type = function(){
     try{
-        if(this.profile.applicantType == "Egg Donor"){
-            return "images/icons/Zygote.png";
-        }else if (this.profile.applicantType == "Sperm Donor"){
-            return "images/icons/Sperm.png";
-        }else if(this.profile.applicantType == "Surrogate"){
-            return "images/icons/Pregnant.png";
+        if(this.profile.role == "Administrator"){
+            return "/images/icons/Default_User.jpg";
+        }else if (this.profile.role == "Editor"){
+            return "/images/icons/Default_User.jpg";
+        }else if(this.profile.role == "Collaborator"){
+            return "/images/icons/Default_User.jpg";
         }else{
-            return "images/icons/Conception.png";
+            return "/images/icons/Default_User.jpg";
         }
     }catch(error){
         console.error(error);

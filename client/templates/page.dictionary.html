@@ -8,7 +8,7 @@
 
 
 <template name="dictionaryDatasetTemplate">
-    <div id="dictionaryDatasetPage" class="page">
+    <div id="dictionaryDatasetPage" class="page">\
         <div class="container doesnt-overlap-header">
             {{> dictionaryIndexTemplate }}
 
@@ -27,25 +27,15 @@
                 <!--</div>-->
             <!--</div>-->
 
-            {{#if notEditingWord }}
-            <div class="padded panel control-buttons">
-                <div class="col col-lg-3 with-btn-spacer">
-                    <div class="dictionary-btn fullwidth btn btn-info">Main Dictionary</div>
-                </div>
-                <div class="col col-lg-3 with-btn-spacer">
-                    <div class="editing-queue-button fullwidth btn btn-default">Editing Queue</div>
-                </div>
-                <div class="col col-lg-3 with-btn-spacer">
-                    <div class="approval-queue-button fullwidth btn btn-default">Approval Queue</div>
-                </div>
-                <div class="col col-lg-3 with-btn-spacer">
-                    <div class="deleting-queue-button fullwidth btn btn-default">Deletion Queue</div>
-                </div>
-            </div>
+            {{#if isCollaborator }}
+
             {{/if}}
         </div>
     </div>
 </template>
+
+
+
 
 <template name="dictionaryIndexTemplate">
     <div class="panel panel-info">
@@ -63,25 +53,31 @@
         </ul>
         {{/if}}
     </div>
-
     {{#if editingWord }}
-    <div class="padded panel control-buttons">
-        <div class="col col-lg-4 with-btn-spacer">
-            <div class="cancel-btn fullwidth btn btn-info">Back to Dictionary</div>
-        </div>
-        <div class="col col-lg-2 with-btn-spacer">
-            <div class="flag-btn fullwidth btn btn-default">Flag</div>
-        </div>
-        <div class="col col-lg-2 with-btn-spacer">
-            <div class="approve-btn fullwidth btn btn-default">Approve</div>
-        </div>
-        <div class="col col-lg-2 with-btn-spacer">
-            <div class="new-button fullwidth btn btn-default">New Entry</div>
-        </div>
-        <div class="col col-lg-2 with-btn-spacer">
-            <div class="delete-button fullwidth btn btn-default">Delete</div>
-        </div>
-    </div>
+        {{#if isCollaborator }}
+            <div class="padded panel control-buttons">
+                <!--<div class="col col-lg-4 with-btn-spacer">-->
+                    <!--<div class="cancel-btn fullwidth btn btn-info">Back to Dictionary</div>-->
+                <!--</div>-->
+                    <div class="col col-lg-2 with-btn-spacer">
+                        <div class="flag-btn fullwidth btn btn-default">Flag</div>
+                    </div>
+                    {{#if isEditor }}
+                    <div class="col col-lg-2 with-btn-spacer">
+                        <div class="approve-btn fullwidth btn btn-default">Approve</div>
+                    </div>
+                    {{#if isAdmin}}
+                        <div class="col col-lg-2 with-btn-spacer">
+                            <div class="delete-button fullwidth btn btn-default">Delete</div>
+                        </div>
+                    {{/if}}
+                    <div class="col col-lg-2 with-btn-spacer pull-right">
+                        <div class="new-button fullwidth btn btn-default">New Entry</div>
+                    </div>
+
+                {{/if}}
+            </div>
+        {{/if}}
     {{/if}}
 </template>
 <template name="dictionaryItemTemplate">
@@ -103,7 +99,7 @@
     <div class="whitepaper dictionary-form">
         <div class="col col-lg-3">
             <input id="dictionaryWordInput" type="text" placeholder="spelling..." value="{{Word}}" {{word_enabled}}></input>
-            <label class="smallgray" for="dictionaryWordInput">Word</label>
+            <!--<label class="smallgray" for="dictionaryWordInput">Word</label>-->
             <br>
             <div class="entry-status">
                 <span class="huge pictograph">{{getStatus}}</span><span class="status-text">  {{ Status }}</span>
@@ -111,8 +107,20 @@
         </div>
         <div class="col col-lg-9">
 
-            <label class="textarea" for="dictionaryDefinitionInput">Definition</label>
+            <!--<label class="textarea" for="dictionaryDefinitionInput">Definition</label>-->
             <textarea id="dictionaryDefinitionInput" placeholder="spelling..." rows="3" {{definition_enabled}}> {{ Definition }} </textarea>
+
+            <br>
+            <input id="pronunciationInput" type="text" placeholder="pro-nun-ci-a-tion" value="{{ Pronunciation }}" {{pronunciation_enabled}}></input>
+            <!--<label class="smallgray" for="pronunciationInput">Pronunciation</label>-->
+
+            <br>
+            <input id="grammarInput" type="text" placeholder="noun | verb | adjective" value="{{ Grammar }}" {{grammar_enabled}}></input>
+            <!--<label class="smallgray" for="grammarInput">Grammar</label>-->
+
+            <br>
+            <input id="imageUrlInput" type="text" placeholder="http://www.website.com/image.jpg" value="{{ Image }}" {{image_enabled}}></input>
+            <!--<label class="smallgray" for="imageUrlInput">Image URL</label>-->
 
         </div>
     </div>

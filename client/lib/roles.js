@@ -1,31 +1,30 @@
 
 isAdmin = function(userId) {
-    return Roles.userIsInRole(userId, ['admin']);
+    return Roles.userIsInRole(userId, ['Admin']);
 };
 
-isPatient = function(userId) {
-    return Roles.userIsInRole(userId, ['patient']);
+isEditor = function(userId) {
+    return Roles.userIsInRole(userId, ['Editor']);
 };
 
-isPhysician = function(userId) {
-    return Roles.userIsInRole(userId, ['physician']);
+isCollaborator = function(userId) {
+    return Roles.userIsInRole(userId, ['Collaborator']);
 };
 
-isNurse = function(userId) {
-    return Roles.userIsInRole(userId, ['host']);
+
+setRole = function(userId, role) {
+    if (Roles.userIsInRole(userId, 'Admin')) {
+        Roles.removeUsersFromRoles(userId, 'Admin');
+    }
+    if (Roles.userIsInRole(userId, 'Editor')) {
+        Roles.removeUsersFromRoles(userId, 'Editor');
+    }
+    if (Roles.userIsInRole(userId, 'Collaborator')) {
+        Roles.removeUsersFromRoles(userId, 'Collaborator');
+    }
+    return Roles.addUsersToRoles(userId, role);
 };
 
-isTechnologist = function(userId) {
-    return Roles.userIsInRole(userId, ['broadcaster']);
-};
-
-isNurseAid = function(userId) {
-    return Roles.userIsInRole(userId, ['viewer']);
-};
-
-isFamily = function(userId, docOwner) {
-    return userId === docOwner;
-};
 
 slugify = function(text) {
     text = text.replace(/[^-a-zA-Z0-9,&\s]+/g, '');

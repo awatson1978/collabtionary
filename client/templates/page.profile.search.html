@@ -1,0 +1,51 @@
+
+
+<template name="profileSearchTemplate">
+    <div class="panel panel-success">
+        <div class="panel-heading padded">
+            <bold>Search Profiles</bold>
+        </div>
+        <div id="profileSearchInputs" class="whitepaper">
+            <div>
+                <div class="col col-lg-4 column-left">
+                    <div class="fullwidth admin-donor-button btn {{adminButtonActive}}">Admin</div>
+                </div>
+                <div class="col col-lg-4 column-center">
+                    <div class="fullwidth editor-button btn {{editorButtonActive}}">Editor</div>
+                </div>
+                <div class="col col-lg-4 column-right with-bottom-padding">
+                    <div class="fullwidth collaborator-button btn {{collaboratorButtonActive}}">Collaborator</div>
+                </div>
+            </div>
+
+            <input id="usernameSearchInput" type="text" placeholder="jdoe"></input>
+            <label class="smallgray" for="usernameSearchInput">Username</label>
+        </div>
+    </div>
+
+    {{#if isAdmin }}
+    <div class="panel panel-danger">
+        <div class="panel-heading padded">
+            <bold>Admin Search</bold>
+        </div>
+        <div id="profileAdminSearchInputs" class="meteor-form">
+            <input id="nameSearchInput" type="text" placeholder="Jane Doe"></input>
+            <br>
+            <!--<label class="smallgray" for="nameSearchInput">Name</label>-->
+
+            <input id="emailSearchInput" type="email" placeholder="jane@somewhere.edu"></input>
+            <br>
+            <!--<label class="smallgray" for="emailSearchInput">Email</label>-->
+
+            <input id="socialSecuritySearchInput" type="text" placeholder="123-45-6789"></input>
+            <br>
+            <!--<label class="smallgray" for="socialSecuritySearchInput">SSN</label>-->
+
+            <input id="applicantStatusSearchInput" type="text" placeholder="Submitted"></input>
+            <!--<label class="smallgray" for="applicantStatusSearchInput">Applicant Status</label>-->
+        </div>
+    </div>
+    {{/if}}
+
+</template>
+

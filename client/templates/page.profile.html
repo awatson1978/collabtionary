@@ -11,8 +11,8 @@
     </div>
 </template>
 
-<!-- routing templates -->
 
+<!-- routing templates -->
 <template name="myProfileTemplate">
     <div id="myProfilePage" class="page">
         <div class="container doesnt-overlap-header">
@@ -51,7 +51,6 @@
 
 
 <!-- page templates -->
-
 <template name="manageProfilesPageTemplate">
     <div id="searchPanel" class="col col-lg-4">
         {{> profileSearchTemplate }}
@@ -64,18 +63,14 @@
     </div>
 </template>
 
-<template name="userAccountsListTemplate" class="doesnt-overlap-footer">
-    <!--<input id="userProfileSearchInput"type="text" placeholder="Filter..."></input>-->
 
+<template name="userAccountsListTemplate" class="doesnt-overlap-footer">
     <div>
-        <ul id="userProfilesList" class="with-bottom-padding">
+        <ul id="userProfilesList" class="plain with-bottom-padding">
             {{#each userAccountsList}}
             {{> userAccountCardTemplate }}
             {{/each}}
-            <li><br></li>
-            <li><br></li>
         </ul>
-
     </div>
 </template>
 
@@ -86,11 +81,12 @@
             <div class="panel-heading">
                 {{ username }}
             </div>
-            {{#if isPublic }}
             <img class="users_list_image" src="{{ profile.avatar }}">
-            {{else}}
-            <img class="users_list_image" src="{{ userlist_avatar_for_account_type }}">
-            {{/if}}
+
+            {{!#if isPublic }}
+            {{!else}}
+            <!--<img class="users_list_image" src="{{ userlist_avatar_for_account_type }}">-->
+            {{!/if}}
 
             <div class="panel-content">
                 {{ profile.name }}<br>
@@ -110,12 +106,7 @@
             <div class="panel panel-success">
                 <div class="panel-heading padded">
                     <bold>User Profile</bold>
-                    {{#if canEdit }}
-                    <div class="profile-type-buttons pull-right">
-                        <div class="profile-anonymous-button btn {{anonymousProfileButtonActive}}">Anonymous</div>
-                        <div class="profile-public-button btn {{publicProfileButtonActive}}">Public</div>
-                    </div>
-                    {{/if}}
+                    <div class="pull-right">{{ profile.role }}</div>
                 </div>
 
                 <div id="userProfileInputs" class="whitepaper">
@@ -131,93 +122,113 @@
                             </div>
                         </div>
                         <div class="col col-lg-9 with-top-padding">
-                            {{#if isSelectingProfileType}}
-                            <div class="padding gray with-rounded-corners">
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray sperm-icon-btn with-rounded-corners" src="/images/icons/Sperm.png">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray zygote-icon-btn with-rounded-corners" src="/images/icons/Zygote.png">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray pregnant-icon-btn with-rounded-corners" src="/images/icons/Pregnant.png">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray conception-icon-btn with-rounded-corners" src="/images/icons/Conception.png">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray female-icon-btn with-rounded-corners" src="/images/icons/User_Patient_Female.png">
-                                </div>
-                                <div class="col col-lg-2">
-                                    <img class="dynamic clickable gray male-icon-btn with-rounded-corners" src="/images/icons/User_Patient_Male.png">
-                                </div>
-                            </div>
-                            {{else}}
+
                             <input id="usernameInput" type="text" placeholder="jdoe" value="{{username}}" {{username_enabled}}></input>
-                            <label class="smallgray" for="usernameInput">Username</label>
+                            <!--<label class="smallgray" for="usernameInput">Username</label>-->
+                            <br>
 
-                            {{#if isPublic }}
-                            <input id="nameInput" type="text" placeholder="Jane Doe" value="{{ profile.name }}"  {{profile_name_enabled}}></input>
-                            <label class="smallgray" for="nameInput">Full Name</label>
+                                {{#if isPublic }}
+                                <input id="nameInput" type="text" placeholder="Jane Doe" value="{{ profile.name }}"  {{profile_name_enabled}}></input>
+                                <!--<label class="smallgray" for="nameInput">Full Name</label>-->
+                                <br>
 
-                            <input id="primaryEmailInput" type="email" placeholder="janedoe@somewhere.edu" value="{{ primary_email }}"  {{ primary_email_enabled }}></input>
-                            <label class="smallgray" for="primaryEmailInput">Email</label>
-                            {{/if}}
+                                <input id="primaryEmailInput" type="email" placeholder="janedoe@somewhere.edu" value="{{ primary_email }}"  {{ primary_email_enabled }}></input>
+                                <!--<label class="smallgray" for="primaryEmailInput">Email</label>-->
+                                {{/if}}
+                                <br>
 
-                            <input id="applicantTypeInput" type="text" placeholder="Egg Donor" value="{{ profile.applicantType }}"  {{profile_applicant_type_enabled}}></input>
-                            <label class="smallgray" for="applicantTypeInput">Applicant Type</label>
-
-                            <input id="applicantStatusInput" type="text" placeholder="Unsubmitted" value="{{ profile.applicantStatus }}"  {{profile_applicant_status_enabled}}></input>
-                            <label class="smallgray" for="applicantStatusInput">Applicant Status</label>
-                            {{/if}}
+                            <!--<input id="applicantTypeInput" type="text" placeholder="Egg Donor" value="{{ profile.applicantType }}"  {{profile_applicant_type_enabled}}></input>-->
+                            <!--<label class="smallgray" for="applicantTypeInput">Applicant Type</label>-->
                         </div>
                     </div>
                 </div>
             </div>
-
-
             {{#if isAdmin }}
-            <div class="panel panel-danger">
-                <div class="panel-heading padded">
-                    <bold>Demographics</bold>
-                </div>
-
-                <div id="userProfileDemographicsInputs" class="whitepaper">
-                    <div class="row">
-                        <div class="col col-lg-6">
-                            <input id="addressInput" type="text" placeholder="123 Main St." value="{{ profile.address }}"  {{profile_address_enabled}}></input>
-                            <label class="smallgray" for="addressInput">Address</label>
-
-                            <input id="cityInput" type="text" placeholder="Somewhere" value="{{ profile.city }}"  {{profile_city_enabled}}></input>
-                            <label class="smallgray" for="cityInput">City</label>
-
-                            <input id="stateInput" type="text" placeholder="NY" value="{{ profile.state }}"  {{profile_state_enabled}}></input>
-                            <label class="smallgray" for="stateInput">State</label>
-
-                            <input id="zipInput" type="text" placeholder="11100" value="{{ profile.zip }}"  {{profile_zip_enabled}}></input>
-                            <label class="smallgray" for="zipInput">Zip</label>
-                        </div>
-                        <div class="col col-lg-6">
-                            <input id="socialSecurityInput" type="text" placeholder="123-45-6789" value="{{ profile.socialsecurity }}"  {{profile_socialsecurity_enabled}}></input>
-                            <label class="smallgray" for="socialSecurityInput">SSN</label>
-
-                            <input id="workPhoneInput" type="tel" placeholder="212-555-1234" value="{{ profile.workphone }}"  {{profile_workphone_enabled}}></input>
-                            <label class="smallgray" for="workPhoneInput">Work Phone</label>
-
-                            <input id="homePhoneInput" type="tel" placeholder="333-555-1234" value="{{ profile.workphone }}"  {{profile_homephone_enabled}}></input>
-                            <label class="smallgray" for="homePhoneInput">Home Phone</label>
-
-                            <input id="mobilePhoneInput" type="tel" placeholder="773-555-1234" value="{{ profile.workphone }}"  {{profile_mobilephone_enabled}}></input>
-                            <label class="smallgray" for="mobilePhoneInput">Mobile Phone</label>
-                        </div>
+            <div class="padded panel control-buttons">
+                <div class="row">
+                    <div class="col col-lg-4 with-btn-spacer">
+                        <div class="set-admin-btn fullwidth btn {{ adminCardButtonActive }}">Admin</div>
+                    </div>
+                    <div class="col col-lg-4 with-btn-spacer">
+                        <div class="set-editor-btn fullwidth btn {{ editorCardButtonActive }}">Editor</div>
+                    </div>
+                    <div class="col col-lg-4 with-btn-spacer">
+                        <div class="set-collaborator-btn fullwidth btn {{ collaboratorCardButtonActive }}">Collaborator</div>
                     </div>
                 </div>
             </div>
             {{/if }}
 
-            <br>
-            <br>
-            <br>
+            <div class="padded panel control-buttons">
+                <div class="row">
+                    <!--<div class="col col-lg-3 with-btn-spacer">-->
+                        <!--<div class="dictionary-btn fullwidth btn btn-success">Main Dictionary</div>-->
+                    <!--</div>-->
+                    <div class="col col-lg-3 with-btn-spacer">
+                        <div class="flagged-btn fullwidth btn btn-default">Flagged</div>
+                    </div>
+                    {{#if isAdmin }}
+                        <div class="col col-lg-3 with-btn-spacer">
+                            <div class="search-btn fullwidth btn btn-default">Search</div>
+                        </div>
+                        <div class="col col-lg-3 with-btn-spacer">
+                            <div class="manage-btn fullwidth btn btn-info">Manage</div>
+                        </div>
+                        <div class="col col-lg-3 with-btn-spacer">
+                            <div class="deleted-btn fullwidth btn btn-default">Deleted</div>
+                        </div>
+                    {{/if}}
+                    <div class="col col-lg-3 with-btn-spacer">
+                        <div class="approved-btn fullwidth btn btn-default">Approved</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    {{#if isAdmin }}
+            <div class="panel panel-danger">
+                <div class="panel-heading padded">
+                    <bold>Demographics</bold>
+                </div>
+                <div id="userProfileDemographicsInputs" class="whitepaper">
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <input id="addressInput" type="text" placeholder="123 Main St." value="{{ profile.address }}"  {{profile_address_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="addressInput">Address</label>-->
+
+                            <input id="cityInput" type="text" placeholder="Somewhere" value="{{ profile.city }}"  {{profile_city_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="cityInput">City</label>-->
+
+                            <input id="stateInput" type="text" placeholder="NY" value="{{ profile.state }}"  {{profile_state_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="stateInput">State</label>-->
+
+                            <input id="zipInput" type="text" placeholder="11100" value="{{ profile.zip }}"  {{profile_zip_enabled}}></input>
+                            <!--<label class="smallgray" for="zipInput">Zip</label>-->
+                        </div>
+                        <div class="col col-lg-6">
+                            <input id="socialSecurityInput" type="text" placeholder="123-45-6789" value="{{ profile.socialsecurity }}"  {{profile_socialsecurity_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="socialSecurityInput">SSN</label>-->
+
+                            <input id="workPhoneInput" type="tel" placeholder="212-555-1234" value="{{ profile.workphone }}"  {{profile_workphone_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="workPhoneInput">Work Phone</label>-->
+
+                            <input id="homePhoneInput" type="tel" placeholder="333-555-1234" value="{{ profile.workphone }}"  {{profile_homephone_enabled}}></input>
+                            <br>
+                            <!--<label class="smallgray" for="homePhoneInput">Home Phone</label>-->
+
+                            <input id="mobilePhoneInput" type="tel" placeholder="773-555-1234" value="{{ profile.workphone }}"  {{profile_mobilephone_enabled}}></input>
+                            <!--<label class="smallgray" for="mobilePhoneInput">Mobile Phone</label>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if }}
         {{/with}}
     {{/if}}
 </template>
@@ -234,74 +245,4 @@
 
 
 
-
-
-
-<template name="profileSearchTemplate">
-    <div class="panel panel-success">
-        <div class="panel-heading padded">
-            <bold>Search Profiles</bold>
-        </div>
-        <div id="profileSearchInputs" class="whitepaper">
-
-            <!--<div>-->
-                <!--<div class="col col-lg-4 column-left">-->
-                    <!--<div class="fullwidth anonymous-button btn {{anonymousButtonActive}}">Anonymous</div>-->
-                <!--</div>-->
-                <!--<div class="col col-lg-4 column-center">-->
-                    <!--<div class="fullwidth any-button btn {{anyButtonActive}}">Any</div>-->
-                <!--</div>-->
-                <!--<div class="col col-lg-4 column-right with-bottom-padding">-->
-                    <!--<div class="fullwidth public-button btn {{publicButtonActive}}">Public</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <div>
-                <div class="col col-lg-4 column-left">
-                    <div class="fullwidth egg-donor-button btn {{adminButtonActive}}">Admin</div>
-                </div>
-                <div class="col col-lg-4 column-center">
-                    <div class="fullwidth surrogate-button btn {{editorButtonActive}}">Editor</div>
-                </div>
-                <div class="col col-lg-4 column-right with-bottom-padding">
-                    <div class="fullwidth sperm-donor-button btn {{collaboratorButtonActive}}">Collaborator</div>
-                </div>
-            </div>
-
-            <input id="usernameSearchInput" type="text" placeholder="jdoe"></input>
-            <label class="smallgray" for="usernameSearchInput">Username</label>
-
-            <!--<input id="educationSearchInput" type="text" placeholder="graduate"></input>-->
-            <!--<label class="smallgray" for="educationSearchInput">Education</label>-->
-
-            <!--<input id="employmentSearchInput" type="text" placeholder="employed"></input>-->
-            <!--<label class="smallgray" for="employmentSearchInput">Employment</label>-->
-
-            <!--<input id="interestsSearchInput" type="text" placeholder="softball"></input>-->
-            <!--<label class="smallgray" for="interestsSearchInput">Interests</label>-->
-        </div>
-    </div>
-
-    {{#if isAdmin }}
-    <div class="panel panel-danger">
-        <div class="panel-heading padded">
-            <bold>Admin Search</bold>
-        </div>
-        <div id="profileAdminSearchInputs" class="meteor-form">
-            <input id="nameSearchInput" type="text" placeholder="Jane Doe"></input>
-            <label class="smallgray" for="nameSearchInput">Name</label>
-
-            <input id="emailSearchInput" type="email" placeholder="jane@somewhere.edu"></input>
-            <label class="smallgray" for="emailSearchInput">Email</label>
-
-            <input id="socialSecuritySearchInput" type="text" placeholder="123-45-6789"></input>
-            <label class="smallgray" for="socialSecuritySearchInput">SSN</label>
-
-            <input id="applicantStatusSearchInput" type="text" placeholder="Submitted"></input>
-            <label class="smallgray" for="applicantStatusSearchInput">Applicant Status</label>
-        </div>
-    </div>
-    {{/if}}
-
-</template>
 

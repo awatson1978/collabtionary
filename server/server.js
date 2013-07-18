@@ -4,10 +4,10 @@ Accounts.onCreateUser(function(options, user) {
     user.username = options.email.split("@")[0];
     user.profile = {};
     user.profile.name = options.email.split("@")[0];
-    user.profile.visibility = "Hidden";
+    user.profile.visibility = "Visible";
     user.profile.avatar = "/images/icons/Default_User.jpg";
     //user.profile.applicantType = "Egg Donor";
-    user.profile.role = "User";
+    //user.profile.role = "User";
 
     if(options.profile){
         user.profile = options.profile;

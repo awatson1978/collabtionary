@@ -54,6 +54,21 @@ Meteor.Router.add({
             return 'signin';
         }
     },
+    '/notfound': function(){
+        return 'notFound';
+    },
+    '/signin': function(){
+        return 'signin';
+    },
+    '/login': function(){
+        return 'signin';
+    },
+    '/loading': function(){
+        return 'loading';
+    },
+    '/logout': function(){
+        return 'logout';
+    },
     '*': function(){
         return 'dictionaryDatasetTemplate';
     }

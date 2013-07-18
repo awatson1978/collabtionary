@@ -5,3 +5,6 @@
 //    Meteor.subscribe('dowjones', Session.get('day_summary_search'));
 //
 //});
+
+Meteor.subscribe('usersDirectory');
+Meteor.subscribe('userProfile', Meteor.userId());
