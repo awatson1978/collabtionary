@@ -28,8 +28,16 @@
         {{#if queuesAreVisible }}
         <!--<div class="padded panel control-buttons">-->
         <div class="col col-lg-3 with-btn-spacer">
-            <div class="dictionary-btn fullwidth footer-text">All Items</div>
+            <div class="dictionary-btn fullwidth footer-text">Raw Unedited</div>
             <!--<div class="dictionary-btn fullwidth btn btn-info">All Items</div>-->
+        </div>
+        <div class="col col-lg-3 with-btn-spacer">
+            <div class="approved-queue-button fullwidth footer-text">Copyedited Dictionary</div>
+            <!--<div class="deleting-queue-button fullwidth btn btn-default">Approved Queue</div>-->
+        </div>
+        <div class="col col-lg-3 with-btn-spacer">
+            <div class="visual-queue-button fullwidth footer-text">Visual Dictionary</div>
+            <!--<div class="deleting-queue-button fullwidth btn btn-default">Approved Queue</div>-->
         </div>
             {{#if isEditor }}
             <div class="col col-lg-3 with-btn-spacer">
@@ -39,10 +47,6 @@
             <div class="col col-lg-3 with-btn-spacer">
                 <div class="edited-queue-button fullwidth footer-text">Edited Queue</div>
                 <!--<div class="edited-queue-button fullwidth btn btn-default">Edited Queue</div>-->
-            </div>
-            <div class="col col-lg-3 with-btn-spacer">
-                <div class="approved-queue-button fullwidth footer-text">Approved Queue</div>
-                <!--<div class="deleting-queue-button fullwidth btn btn-default">Approved Queue</div>-->
             </div>
                 {{#if isAdmin }}
                 <div class="col col-lg-2 with-btn-spacer">

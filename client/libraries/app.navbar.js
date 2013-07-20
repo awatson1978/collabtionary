@@ -62,26 +62,43 @@ Template.queuesList.events({
         Session.set('show_login_menu', false);
         Session.set('selected_word', '');
         Session.set('active_queue', "");
+        Session.set('must_have_image', false);
+        Meteor.flush();
     },
     'click .flagged-queue-button':function(){
         Session.set('show_login_menu', false);
         Session.set('selected_word', '');
         Session.set('active_queue', "Flagged");
+        Session.set('must_have_image', false);
+        Meteor.flush();
     },
     'click .edited-queue-button':function(){
         Session.set('show_login_menu', false);
         Session.set('selected_word', '');
         Session.set('active_queue', "Edited");
+        Session.set('must_have_image', false);
+        Meteor.flush();
     },
     'click .approved-queue-button':function(){
         Session.set('show_login_menu', false);
         Session.set('selected_word', '');
         Session.set('active_queue', "Approved");
+        Session.set('must_have_image', false);
+        Meteor.flush();
     },
     'click .deleting-queue-button':function(){
         Session.set('show_login_menu', false);
         Session.set('selected_word', '');
         Session.set('active_queue', "Deleting");
+        Session.set('must_have_image', false);
+        Meteor.flush();
+    },
+    'click .visual-queue-button':function(){
+        Session.set('show_login_menu', false);
+        Session.set('selected_word', '');
+        Session.set('active_queue', "");
+        Session.set('must_have_image', true);
+        Meteor.flush();
     }
 });
 

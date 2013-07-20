@@ -36,8 +36,9 @@ Template.dictionaryDatasetTemplate.notEditingWord = function(){
 //-------------------------------------------------------------
 // dictionaryIndexTemplate
 
-Template.dictionaryIndexTemplate.isCollaborator = function(){
 
+
+Template.dictionaryIndexTemplate.isCollaborator = function(){
     if(Meteor.userId()){
         return isCollaborator(Meteor.userId()) || isEditor(Meteor.userId()) || isAdmin(Meteor.userId());
     }else{
@@ -60,7 +61,34 @@ Template.dictionaryIndexTemplate.editingWord = function(){
         return false;
     }
 };
+Template.dictionaryIndexTemplate.imageGrid = function(){
+    try{
+        return Session.get('must_have_image');
+    }catch(error){
+        console.error(error);
+    }
+};
 
+
+Template.dictionaryIndexTemplate.dictionaryList = function(){
+    try{
+        return Dictionary.find({
+            'Word': { $regex: Session.get('dictionary_search'), $options: 'i' }
+        },{limit: 20});
+    }catch(error){
+        console.log(error);
+    }
+};
+Template.dictionaryIndexTemplate.imageList = function(){
+    try{
+        return Dictionary.find({
+            Word: { $regex: Session.get('dictionary_search'), $options: 'i' },
+            Image : { $exists : true}
+        },{limit: 20});
+    }catch(error){
+        console.log(error);
+    }
+};
 
 
 
@@ -92,15 +120,8 @@ Template.dictionaryIndexTemplate.events({
 });
 
 
-Template.dictionaryIndexTemplate.dictionaryList = function(){
-    try{
-        return Dictionary.find({
-                'Word': { $regex: Session.get('dictionary_search'), $options: 'i' }
-        },{limit: 20});
-    }catch(error){
-        console.log(error);
-    }
-};
+
+
 Template.dictionaryIndexTemplate.events({
     'click .list-group-item':function(event, template){
         Session.set('selected_word', this._id);

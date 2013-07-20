@@ -1,14 +1,14 @@
-<template name="test">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-        Test!
-        </div>
-    </div>
-</template>
+<!--<template name="test" xmlns="http://www.w3.org/1999/html">-->
+    <!--<div class="panel panel-info">-->
+        <!--<div class="panel-heading">-->
+        <!--Test!-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</template>-->
 
 
 <template name="dictionaryDatasetTemplate">
-    <div id="dictionaryDatasetPage" class="page">\
+    <div id="dictionaryDatasetPage" class="page">
         <div class="container doesnt-overlap-header">
             {{> dictionaryIndexTemplate }}
 
@@ -38,18 +38,26 @@
 
 
 <template name="dictionaryIndexTemplate">
-    <div class="panel panel-info">
+    <div class="auto-height panel panel-info">
         <div class="panel-heading">
             <input id="dictionarySearchInput" type="text" placeholder="Filter..." value="life"></input>
         </div>
 
         {{#if editingWord }}
-        {{> dictionaryFormTemplate }}
+            {{> dictionaryFormTemplate }}
         {{else}}
-        <ul class="list-group">
-            {{#each dictionaryList}}
-            {{> dictionaryItemTemplate }}
-            {{/each}}
+        <ul class="plain list-group">
+                {{#if imageGrid }}
+                    {{#each imageList }}
+                    <li class="col col-lg-3">
+                        <img class="with-rounded-corners" src="{{ Image }}">
+                    </li>
+                    {{/each}}
+                {{else}}
+                    {{#each dictionaryList}}
+                        {{> dictionaryItemTemplate }}
+                    {{/each}}
+                {{/if}}
         </ul>
         {{/if}}
     </div>
@@ -101,9 +109,12 @@
             <input id="dictionaryWordInput" type="text" placeholder="spelling..." value="{{Word}}" {{word_enabled}}></input>
             <!--<label class="smallgray" for="dictionaryWordInput">Word</label>-->
             <br>
-            <div class="entry-status">
-                <span class="huge pictograph">{{getStatus}}</span><span class="status-text">  {{ Status }}</span>
-            </div>
+            <!--<div class="entry-status">-->
+                <!--<span class="huge pictograph">{{getStatus}}</span><span class="status-text">  {{ Status }}</span>-->
+            <!--</div>-->
+            <img class="with-rounded-corners" src="{{ Image }}">
+
+
         </div>
         <div class="col col-lg-9">
 

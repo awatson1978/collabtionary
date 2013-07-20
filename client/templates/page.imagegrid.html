@@ -1,0 +1,15 @@
+
+<template name="imageGridTemplate">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <input id="dictionarySearchInput" type="text" placeholder="Filter..." value="life"></input>
+        </div>
+        <ul>
+            {{#each dictionaryList}}
+            <li>
+                <img class="with-rounded-corners">{{ Image }}</li>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

@@ -19,13 +19,31 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58230317">
+    <splitter split-orientation="horizontal" split-proportion="0.4100061">
       <split-first>
         <leaf>
-          <file leaf-file-name="page.dictionary.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="page.dictionary.html" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/templates/page.dictionary.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="73" column="71" selection-start="2864" selection-end="2864" vertical-scroll-proportion="0.67868507">
+                <state line="10" column="49" selection-start="326" selection-end="326" vertical-scroll-proportion="0.18181819">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.layout.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/app.layout.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="-7.68">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="syntax.custom.less" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/stylesheets/syntax.custom.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="103" column="1" selection-start="1848" selection-end="1848" vertical-scroll-proportion="-8.346154">
                   <folding />
                 </state>
               </provider>
@@ -34,7 +52,7 @@
           <file leaf-file-name="app.navbars.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/app.navbars.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="23" selection-start="2252" selection-end="2252" vertical-scroll-proportion="-30.44">
+                <state line="46" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-21.12">
                   <folding />
                 </state>
               </provider>
@@ -52,7 +70,25 @@
           <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="6" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
+                <state line="56" column="28" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="page.profile.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/page.profile.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="76" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="page.imagegrid.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/page.imagegrid.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="13" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -62,19 +98,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="page.dictionary.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="page.dictionary.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/libraries/page.dictionary.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="105" column="0" selection-start="2872" selection-end="2919" vertical-scroll-proportion="0.0">
+                <state line="81" column="29" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.5468085">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.navbars.less" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/stylesheets/app.navbars.less">
+          <file leaf-file-name="initialize.dictionary.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/packages/dataset-dictionary/initialize.dictionary.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="1" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0">
+                <state line="20" column="87" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -83,16 +119,16 @@
           <file leaf-file-name="page.profile.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/libraries/page.profile.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="138" column="30" selection-start="4644" selection-end="4644" vertical-scroll-proportion="0.0">
+                <state line="147" column="12" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.navbar.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="app.navbar.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/libraries/app.navbar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="83" column="0" selection-start="2169" selection-end="2169" vertical-scroll-proportion="0.9523337">
+                <state line="99" column="36" selection-start="2776" selection-end="2791" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -110,30 +146,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/lib/roles.js" />
-        <option value="$PROJECT_DIR$/server/publish.js" />
         <option value="$PROJECT_DIR$/lib/model.js" />
         <option value="$PROJECT_DIR$/client/templates/page.profile.search.html" />
-        <option value="$PROJECT_DIR$/client/stylesheets/syntax.custom.less" />
         <option value="$PROJECT_DIR$/client/main.js" />
         <option value="$PROJECT_DIR$/client/templates/app.routing.html" />
-        <option value="$PROJECT_DIR$/client/templates/page.profile.html" />
         <option value="$PROJECT_DIR$/client/libraries/page.profile.js" />
         <option value="$PROJECT_DIR$/client/stylesheets/app.navbars.less" />
-        <option value="$PROJECT_DIR$/client/libraries/page.dictionary.js" />
         <option value="$PROJECT_DIR$/client/templates/app.layout.html" />
         <option value="$PROJECT_DIR$/client/libraries/app.layout.js" />
+        <option value="$PROJECT_DIR$/client/templates/page.profile.html" />
+        <option value="$PROJECT_DIR$/client/templates/page.imagegrid.html" />
         <option value="$PROJECT_DIR$/client/templates/app.navbars.html" />
         <option value="$PROJECT_DIR$/client/libraries/app.navbar.js" />
+        <option value="$PROJECT_DIR$/client/libraries/page.dictionary.js" />
+        <option value="$PROJECT_DIR$/client/stylesheets/syntax.custom.less" />
+        <option value="$PROJECT_DIR$/client/stylesheets/app.layout.less" />
         <option value="$PROJECT_DIR$/client/templates/page.dictionary.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="739" />
-    <option name="y" value="247" />
-    <option name="width" value="1800" />
-    <option name="height" value="1130" />
+    <option name="x" value="561" />
+    <option name="y" value="497" />
+    <option name="width" value="1953" />
+    <option name="height" value="1194" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -217,6 +253,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collabtionary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collabtionary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collabtionary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collabtionary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -271,42 +339,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collabtionary" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collabtionary" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collabtionary" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="collabtionary" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -317,23 +349,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="web-ide.project.structure" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/client/stylesheets" />
       <recent name="$PROJECT_DIR$/client/libraries" />
       <recent name="$PROJECT_DIR$/client/templates" />
-      <recent name="$PROJECT_DIR$/packages" />
-      <recent name="$PROJECT_DIR$/public/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/wallpapers" />
       <recent name="$PROJECT_DIR$/client/stylesheets/bootstrap3/shared" />
       <recent name="$PROJECT_DIR$/client/stylesheets/bootstrap3" />
       <recent name="$PROJECT_DIR$/.scrap" />
       <recent name="$PROJECT_DIR$/packages" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -374,17 +406,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="739" y="247" width="1800" height="1130" extended-state="0" />
+    <frame x="561" y="497" width="1953" height="1194" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11930783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14611112" sideWeight="0.6725" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16077828" sideWeight="0.8806922" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908705" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -446,73 +478,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/app.layout.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/subscriptions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="36" selection-start="361" selection-end="361" vertical-scroll-proportion="0.14299901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/roles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="35" selection-start="204" selection-end="204" vertical-scroll-proportion="0.14299901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/app.routing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="10" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.2967265">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/page.profile.search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="31" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.49535602">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/page.profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="60" selection-start="3224" selection-end="3224" vertical-scroll-proportion="0.7252986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="6" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/app.layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="0.19551934">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/libraries/app.layout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="62" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0">
@@ -520,44 +489,107 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="28" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/page.imagegrid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/page.profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/stylesheets/app.navbars.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="1" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0">
+        <state line="47" column="1" selection-start="728" selection-end="728" vertical-scroll-proportion="0.7467726">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/subscriptions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="39" selection-start="364" selection-end="364" vertical-scroll-proportion="0.2195122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="814" selection-end="814" vertical-scroll-proportion="0.63414633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/dataset-dictionary/initialize.dictionary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="87" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/libraries/page.profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="30" selection-start="4644" selection-end="4644" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/libraries/page.dictionary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="2872" selection-end="2919" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/libraries/app.navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="2169" selection-end="2169" vertical-scroll-proportion="0.9523337">
+        <state line="147" column="12" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/app.navbars.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="23" selection-start="2252" selection-end="2252" vertical-scroll-proportion="-30.44">
+        <state line="46" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-21.12">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/libraries/app.navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="36" selection-start="2776" selection-end="2791" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/app.layout.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="1" selection-start="288" selection-end="288" vertical-scroll-proportion="0.24751382">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/syntax.custom.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="1" selection-start="1848" selection-end="1848" vertical-scroll-proportion="-8.346154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/app.layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="-7.68">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/page.dictionary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="71" selection-start="2864" selection-end="2864" vertical-scroll-proportion="0.67868507">
+        <state line="10" column="49" selection-start="326" selection-end="326" vertical-scroll-proportion="0.18181819">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/libraries/page.dictionary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="29" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.5468085">
           <folding />
         </state>
       </provider>
