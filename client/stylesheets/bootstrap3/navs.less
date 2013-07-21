@@ -6,12 +6,15 @@
 @import "shared/variables";
 
 
+//
+// Navs
+// --------------------------------------------------
+
 
 // Base class
 // --------------------------------------------------
 
 .nav {
-  margin-left: 0;
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
@@ -32,44 +35,47 @@
       }
     }
 
-    // Disabled state sets text to gray and nukes hover/tab effects
+  // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
       color: @gray-light;
-    }
-    &.disabled > a:hover,
-    &.disabled > a:focus {
-      color: @gray-light;
-      text-decoration: none;
-      background-color: transparent;
-      cursor: default;
+
+      &:hover,
+      &:focus {
+        color: @gray-light;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: default;
+      }
     }
 
-    // Space the headers out when they follow another list item (link)
+  // Space the headers out when they follow another list item (link)
     + .nav-header {
       margin-top: 9px;
     }
   }
 
-  // Open dropdowns
-  &.open > a,
-  &.open > a:hover,
-  &.open > a:focus {
-    color: #fff;
-    background-color: @link-color;
-    border-color: @link-color;
-    .caret {
-      border-top-color: #fff;
-      border-bottom-color: #fff;
+// Open dropdowns
+  &.open > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: @link-color;
+      border-color: @link-color;
+      .caret {
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+      }
     }
   }
 
-  // Redeclare pull classes because of specifity
-  // Todo: consider making these utilities !important to avoid this bullshit
+// Redeclare pull classes because of specificity
+// Todo: consider making these utilities !important to avoid this bullshit
   > .pull-right {
     float: right;
   }
 
-  // Dividers (basically an hr) within the dropdown
+// Dividers (basically an hr) within the dropdown
   .nav-divider {
     .nav-divider();
   }
@@ -88,10 +94,10 @@
   border-bottom: 1px solid #ddd;
   > li {
     float: left;
-    // Make the list-items overlay the bottom border
+  // Make the list-items overlay the bottom border
     margin-bottom: -1px;
 
-    // Actual tabs (as links)
+  // Actual tabs (as links)
     > a {
       margin-right: 2px;
       line-height: @line-height-base;
@@ -102,18 +108,20 @@
       }
     }
 
-    // Active state, and it's :hover to override normal :hover
-    &.active > a,
-    &.active > a:hover,
-    &.active > a:focus {
-      color: @gray;
-      background-color: @body-bg;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
-      cursor: default;
+  // Active state, and it's :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @gray;
+        background-color: @body-bg;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
     }
   }
-  // pulling this in mainly for less shorthand
+// pulling this in mainly for less shorthand
   &.nav-justified {
     .nav-justified;
     .nav-tabs-justified;
@@ -127,7 +135,7 @@
   > li {
     float: left;
 
-    // Links rendered as pills
+  // Links rendered as pills
     > a {
       border-radius: 5px;
     }
@@ -137,12 +145,14 @@
       }
     }
 
-    // Active state
-    &.active > a,
-    &.active > a:hover,
-    &.active > a:focus {
-      color: #fff;
-      background-color: @component-active-bg;
+  // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: #fff;
+        background-color: @component-active-bg;
+      }
     }
   }
 }
@@ -182,29 +192,13 @@
   > li > a {
     border-bottom: 1px solid #ddd;
 
-    // Override margin from .nav-tabs
+  // Override margin from .nav-tabs
     margin-right: 0;
   }
   > .active > a {
     border-bottom-color: @body-bg;
   }
 
-}
-
-
-
-// Nav headers (for dropdowns and lists)
-// -------------------------
-
-.nav-header {
-  display: block;
-  padding: 3px 15px;
-  font-size: @font-size-mini;
-  font-weight: bold;
-  line-height: @line-height-base;
-  color: @gray-light;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  text-transform: uppercase;
 }
 
 
@@ -222,9 +216,11 @@
 .pill-content > .pill-pane {
   display: none;
 }
-.tab-content > .active,
-.pill-content > .active {
-  display: block;
+.tab-content,
+.pill-content {
+  > .active {
+    display: block;
+  }
 }
 
 
@@ -244,8 +240,8 @@
 
 // Specific dropdowns
 .nav-tabs .dropdown-menu {
-  // make dropdown border overlap tab border
+// make dropdown border overlap tab border
   margin-top: -1px;
-  // Remove the top rounded corners here since there is a hard edge above the menu
+// Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
 }

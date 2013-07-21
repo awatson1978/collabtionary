@@ -1,101 +1,116 @@
-<!--<template name="test" xmlns="http://www.w3.org/1999/html">-->
-    <!--<div class="panel panel-info">-->
-        <!--<div class="panel-heading">-->
-        <!--Test!-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
-
 
 <template name="dictionaryDatasetTemplate">
     <div id="dictionaryDatasetPage" class="page">
         <div class="container doesnt-overlap-header">
             {{> dictionaryIndexTemplate }}
-
-            <!--<div class="about-panel panel panel-success">-->
-                <!--<div class="panel-heading">-->
-                    <!--About-->
-                <!--</div>-->
-                <!--<div class="col col-lg-2 with-btn-spacer">-->
-                    <!--<div class="get-the-code-button fullwidth btn btn-success">Get the Code</div>-->
-                <!--</div>-->
-                <!--<div class="col col-lg-2 with-btn-spacer">-->
-                    <!--<div class="about-the-author-button fullwidth btn btn-default">About the Author</div>-->
-                <!--</div>-->
-                <!--<div class="col col-lg-8">-->
-                    <!--<p>This dictionary is based on a copy of the Websters Unabridged English Dictionary, circa 1920.  Feel free to add or edit entries.  As about open a dictionary as you can get.  :)  </p>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            {{#if isCollaborator }}
-
-            {{/if}}
+            {{> aboutPanel }}
         </div>
     </div>
 </template>
 
+<template name="wordTemplate">
+    <div id="wordTemplatePage" class="page">
+        <div class="container doesnt-overlap-header">
+            {{> dictionaryFormTemplate }}
+        </div>
+    </div>
+</template>
+<template name="aboutPanel">
+    <div class="about-panel panel panel-success">
+        <div class="panel-heading">
+            About
+        </div>
+        <div class="col col-lg-4 with-btn-spacer">
+            <p>This dictionary is based on a copy of the Websters Unabridged English Dictionary, circa 1920.  Feel free to add or edit entries.  As about open a dictionary as you can get.  :)  </p>
+        </div>
+        <div class="col col-lg-4">
+            <table class="fullwidth table table-striped">
+                <thead>
+                    <tr>
+                        <td><bold>username</bold></td>
+                        <td><bold>password</bold></td>
+                        <td><bold>role</bold></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>admin</td>
+                        <td>admin</td>
+                        <td>admin</td>
+                    </tr>
+                    <tr>
+                        <td>editor</td>
+                        <td>editor</td>
+                        <td>editor</td>
+                    </tr>
+                    <tr>
+                        <td>collaborator</td>
+                        <td>collaborator</td>
+                        <td>collaborator</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col col-lg-4 with-btn-spacer">
+            <div class="get-the-code-button fullwidth btn btn-success">Get the Code</div>
+            <div class="spacer row"></div>
+            <div class="about-the-author-button fullwidth btn btn-default">About the Author</div>
+        </div>
 
+    </div>
+</template>
 
 
 <template name="dictionaryIndexTemplate">
-    <div class="auto-height panel panel-info">
-        <div class="panel-heading">
-            <input id="dictionarySearchInput" type="text" placeholder="Filter..." value="life"></input>
-        </div>
-
         {{#if editingWord }}
             {{> dictionaryFormTemplate }}
         {{else}}
-        <ul class="plain list-group">
-                {{#if imageGrid }}
-                    {{#each imageList }}
-                    <li class="col col-lg-3">
-                        <img class="with-rounded-corners" src="{{ Image }}">
-                    </li>
-                    {{/each}}
-                {{else}}
-                    {{#each dictionaryList}}
-                        {{> dictionaryItemTemplate }}
-                    {{/each}}
-                {{/if}}
-        </ul>
-        {{/if}}
-    </div>
-    {{#if editingWord }}
-        {{#if isCollaborator }}
-            <div class="padded panel control-buttons">
-                <!--<div class="col col-lg-4 with-btn-spacer">-->
-                    <!--<div class="cancel-btn fullwidth btn btn-info">Back to Dictionary</div>-->
-                <!--</div>-->
-                    <div class="col col-lg-2 with-btn-spacer">
-                        <div class="flag-btn fullwidth btn btn-default">Flag</div>
-                    </div>
-                    {{#if isEditor }}
-                    <div class="col col-lg-2 with-btn-spacer">
-                        <div class="approve-btn fullwidth btn btn-default">Approve</div>
-                    </div>
-                    {{#if isAdmin}}
-                        <div class="col col-lg-2 with-btn-spacer">
-                            <div class="delete-button fullwidth btn btn-default">Delete</div>
-                        </div>
+            <div class="{{autoHeight}} panel panel-info">
+                <div class="panel-heading">
+                    <input id="dictionarySearchInput" type="text" placeholder="Filter..." value="life"></input>
+                </div>
+                    {{#if imageGrid }}
+                        <ul class="plain list-group">
+                            {{#each imageList }}
+                                <li class="col col-lg-3">
+                                    <div class="masonry-tile with-rounded-corners">
+                                        <img class="masonry-image" src="{{ Image }}">
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{else}}
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="status-column">Status</th>
+                                    <th class="word-column">Word</th>
+                                    <th class="definition-column">Definition</th>
+                                    {{#if showImageColumn }}
+                                        <th class="image-column">Image</th>
+                                    {{/if}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{#each dictionaryList}}
+                                {{> dictionaryItemTemplate }}
+                            {{/each}}
+                            </tbody>
+                        </table>
                     {{/if}}
-                    <div class="col col-lg-2 with-btn-spacer pull-right">
-                        <div class="new-button fullwidth btn btn-default">New Entry</div>
-                    </div>
-
-                {{/if}}
             </div>
         {{/if}}
-    {{/if}}
 </template>
+
 <template name="dictionaryItemTemplate">
-    <li class="list-group-item">
-        <ul class="horizontal">
-            <li class="pictograph status"><div class="status-icon">{{ getStatus }}</div></li>
-            <li class="bold word"><div class="word-text">{{ Word }}</div></li>
-            <li class="definition">{{ Definition }}</li>
-        </ul>
-    </li>
+    <tr class="dictionary-item">
+        <td class="pictograph status">{{ getStatus }}</td>
+        <td class="bold">{{ Word }}</td>
+        {{#if showImageColumn }}
+            <td><img class="img-thumbnail" src="{{ getImage }}"></td>
+        {{/if}}
+        <td>{{ Definition }}</td>
+    </tr>
 </template>
 
 
@@ -103,65 +118,55 @@
 
 <template name="dictionaryFormTemplate">
     {{#if word}}
-    {{#with word}}
-    <div class="whitepaper dictionary-form">
-        <div class="col col-lg-3">
-            <input id="dictionaryWordInput" type="text" placeholder="spelling..." value="{{Word}}" {{word_enabled}}></input>
-            <!--<label class="smallgray" for="dictionaryWordInput">Word</label>-->
-            <br>
-            <!--<div class="entry-status">-->
-                <!--<span class="huge pictograph">{{getStatus}}</span><span class="status-text">  {{ Status }}</span>-->
-            <!--</div>-->
-            <img class="with-rounded-corners" src="{{ Image }}">
-
-
-        </div>
-        <div class="col col-lg-9">
-
-            <!--<label class="textarea" for="dictionaryDefinitionInput">Definition</label>-->
-            <textarea id="dictionaryDefinitionInput" placeholder="spelling..." rows="3" {{definition_enabled}}> {{ Definition }} </textarea>
-
-            <br>
-            <input id="pronunciationInput" type="text" placeholder="pro-nun-ci-a-tion" value="{{ Pronunciation }}" {{pronunciation_enabled}}></input>
-            <!--<label class="smallgray" for="pronunciationInput">Pronunciation</label>-->
-
-            <br>
-            <input id="grammarInput" type="text" placeholder="noun | verb | adjective" value="{{ Grammar }}" {{grammar_enabled}}></input>
-            <!--<label class="smallgray" for="grammarInput">Grammar</label>-->
-
-            <br>
-            <input id="imageUrlInput" type="text" placeholder="http://www.website.com/image.jpg" value="{{ Image }}" {{image_enabled}}></input>
-            <!--<label class="smallgray" for="imageUrlInput">Image URL</label>-->
-
-        </div>
-    </div>
-
-    {{#if isNewWord}}
-    <div class="spacer row"></div>
-    <div class="container">
-        <div class="col col-lg-12">
-            <button id="newDictionaryWordButton" type="button" class="fullwidth btn btn-info" width="100%">Create New Word!</button>
-        </div>
-    </div>
-    {{/if}}
-
-    {{#if isDeletingWord}}
-    <div class="padded container">
-        <div class="alert alert-danger">
-            <h4 class="centered">Are you sure you want to delete this record?</h4>
-            <div class="container">
-                <div class="col col-lg-6">
-                    <button id="deleteDictionaryWordButton" type="button" class="fullwidth btn btn-danger">Delete</button>
+        {{#with word}}
+        <div class="panel {{statusColor}}">
+            <div class="panel-heading">
+                {{Word}}
+                <span class="pull-right">{{Status}}</span>
+            </div>
+            <div class="whitepaper dictionary-form">
+                <div class="col col-lg-3">
+                    <input id="dictionaryWordInput" type="text" placeholder="spelling..." value="{{Word}}" {{word_enabled}}></input>
+                    <br>
+                    <div class="masonry-tile with-rounded-corners">
+                        <img class="clickable entry-image with-rounded-corners" src="{{ getImage }}">
+                    </div>
                 </div>
-                <div class="col col-lg-6">
-                    <button id="cancelDeleteDictionaryWordButton" type="button" class="fullwidth btn btn-danger">Cancel</button>
+                <div class="col col-lg-9">
+                    <textarea id="dictionaryDefinitionInput" placeholder="spelling..." rows="3" {{definition_enabled}}> {{ Definition }} </textarea>
+                    <br>
+                    <input id="pronunciationInput" type="text" placeholder="pro-nun-ci-a-tion" value="{{ Pronunciation }}" {{pronunciation_enabled}}></input>
+                    <br>
+                    <input id="grammarInput" type="text" placeholder="noun | verb | adjective" value="{{ Grammar }}" {{grammar_enabled}}></input>
+                    <br>
+                    <input id="imageUrlInput" type="text" placeholder="http://www.website.com/image.jpg" value="{{ Image }}" {{image_enabled}}></input>
                 </div>
+            </div>
+            <div class="panel-footer">
+                {{#if isCollaborator }}
+                    <div class="flag-btn standard unselectable btn btn-default">Flag</div>
+                    {{#if isEditor }}
+                    <div class="approve-btn standard unselectable btn btn-default">Approve</div>
+                    {{#if isAdmin}}
+                    <div class="delete-button standard unselectable btn btn-default">Delete</div>
+                    {{/if}}
+                    {{/if}}
 
+                    {{#if isNewWord}}
+                        <div id="newDictionaryWordButton" class="standard unselectable btn btn-info nudged-right">Create!</div>
+                        <div class="cancel-btn standard unselectable btn btn-danger nudged-right">Cancel</div>
+                    {{else}}
+                        <div class="new-button standard unselectable btn btn-default nudged-right">New Entry</div>
+                    {{/if}}
+
+                    {{#if isDeletingWord}}
+                    <div id="deleteDictionaryWordButton" class="standard unselectable btn btn-danger">Delete</div>
+                    <div class="cancel-btn standard unselectable btn btn-danger">Cancel</div>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
-    </div>
-    {{/if}}
-    {{/with}}
+        {{/with}}
     {{else}}
     <div class="panel panel-info">
         <div class="panel-heading padded">

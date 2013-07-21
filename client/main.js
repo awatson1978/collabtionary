@@ -54,6 +54,14 @@ Meteor.Router.add({
             return 'signin';
         }
     },
+    '/search/:text': function(text) {
+        Session.set('selected_word', Dictionary.findOne({Word: text}));
+        Session.set('current_action','view');
+        console.log('routing to: ' + text);
+
+        return 'wordTemplate';
+    },
+
     '/notfound': function(){
         return 'notFound';
     },
